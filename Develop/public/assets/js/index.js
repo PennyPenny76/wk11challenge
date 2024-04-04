@@ -1,9 +1,18 @@
+// const { id } = require('../routes/notes.js');
+
 let noteForm;
 let noteTitle;
 let noteText;
 let saveNoteBtn;
 let newNoteBtn;
 let noteList;
+// const gsBtn = document.getElementById('feedback-btn');
+
+// fbBtn.addEventListener('click', (e) => {
+//   e.preventDefault();
+//   window.location.href = '/feedback';
+// });
+
 
 if (window.location.pathname === '/notes') {
   noteForm = document.querySelector('.note-form');
@@ -48,6 +57,14 @@ const saveNote = (note) =>
 const deleteNote = (id) =>
   fetch(`/api/notes/${id}`, {
     method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+
+  const updateNote = (id) =>
+  fetch(`/api/notes/${id}`, {
+    method: 'UPDATE',
     headers: {
       'Content-Type': 'application/json'
     }
